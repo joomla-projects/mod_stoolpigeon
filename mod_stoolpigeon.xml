@@ -1,0 +1,466 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension
+	type="module"
+	version="3.8"
+	client="site"
+	method="upgrade">
+	<name>mod_stoolpigeon</name>
+	<author>Valc (Rafa Gómez)</author>
+	<creationDate>2018-03-03</creationDate>
+	<copyright>Copyright (C) 2011-2012 comunidadjoomla.org. All rights reserved.</copyright>
+	<license>GNU General Public License version 2 or later; see LICENSE.txt</license>
+	<authorEmail>info@comunidadjoomla.org</authorEmail>
+	<authorUrl>www.comunidadjoomla.org</authorUrl>
+	<version>3.8.6.2</version>
+	<description><![CDATA[
+		<div style="text-align:left;"><h2>The module mod_stoolpigeon v3.8.6.2 has been successfully installed</h2>
+		This tool provide a flexible configuration for catch and report common issues related with language matters, but you are not excluded after use it to apply debug tasks or any other required extra control too.<br/><br/>Common issues detectables are:<br/>
+		<ol>
+		<li>Non UTF 8 files.</li>
+		<li>UTF8 with BOM !</li>
+		<li>EOL check for CR (Mac Classic) or CRLF (Windows).</li>
+		<li>Missed files.</li>
+		<li>Extra files.</li>
+		<li>Missed equal symbol.</li>
+		<li>Missed quotes.</li>
+		<li>Wrong double quotes use.</li>
+		<li>Missed keys.</li>
+		<li>Extra keys.</li>
+		<li>Text changes.</li>
+		<li>and few more...</li>
+		</ol>
+		<p></p>
+		<p></p>
+		<p>As extra, you can to give a more advanced use to the module enabling the 'Experimental modes' ('Synchronise target' , 'Edit mode', 'Sort target keys', 'Backup target files')...</p>
+		<p>...that are combinables with 'Experimental options' as 'Relative target line', 'Coordinated task' or 'Display package link', etc</p>
+		<p>Every configurable param have a good amount of info. Please, read the available tooltips info for a right configuration of the module and select the required options according to the type of report that you wanna to display (more or less detailed, more or less specific, etc) -if not enought, you can to found a 'readme' file within the package of the module-</p>
+		<p></p>
+		<p></p>
+		<p>Note than few times an empty line in a file saved with EOF Windows i.e CRLF will ALSO give an alert for the missing = symbol. Solve first one the EOL issue and then you can to be able for catch missed equal too.</p>
+		<p>Or you can to receive a "quote not found" message reported due the line is type: KEY="_QQ_"Text"_QQ_"; (the double quote is not founded at right place, but due there are an ";" at him place. Then, directly we have an issue reported than indirectly leave us to cacth, with revision, odd scenarios too.</p><p>The fact, is that the reported lines are there due the program has founded something wrong or out of the expected result (normally are directlly related with the reported message). With odd scenarios the message can to lie a bit. Pay attention to this one if you have found an unclear reported message.</p>
+		<p></p>
+		<p>Please, if you have found bugs at the module, report the issues at info@comunidadjoomla.org</p>
+		<p></p>
+		<p></p>
+		<p>Special thanks to JM Simonet (infograf) for him help testing and reporting what was wrong, tips, lines of code and extra catcheable issues that are now implementeds (as UTF 8, BOM! and EOL checks).</p>
+		<p></p>
+		<p></p>
+		<p>Enjoy it!</p>
+		<p>The STAFF of ComunidadJoomla.org</p></div>
+		]]></description>
+	<media destination="mod_stoolpigeon" folder="media">
+		<filename>index.html</filename>
+		<folder>css</folder>
+		<folder>images</folder>
+		<folder>js</folder>
+	</media>
+	<files>
+		<filename module="mod_stoolpigeon">mod_stoolpigeon.php</filename>
+		<folder>tmpl</folder>
+		<folder>language</folder>
+		<folder>libraries</folder>
+		<filename>helper.php</filename>
+		<filename>index.html</filename>
+		<filename>mod_stoolpigeon.xml</filename>
+	</files>
+
+	<config>
+	<languages folder="language">
+		<language tag="en-GB">en-GB.mod_stoolpigeon.ini</language>
+		<language tag="es-ES">es-ES.mod_stoolpigeon.ini</language>
+	</languages>
+		<fields name="params">
+			<fieldset name="basic">
+				<field
+					name="spacer"
+					type="spacer"
+					class="text"
+					label="MOD_STOOLPIGEON_REQUIRED_FIELDS_SPACER_LABEL" />
+
+				<field name="spacer1" type="spacer"
+				hr="true" />
+
+
+				<field
+					name="source_language_tag"
+					type="text"
+					default="en-GB"
+					label="MOD_STOOLPIGEON_SOURCE_LANGUAGE_TAG_LABEL"
+					description="MOD_STOOLPIGEON_SOURCE_LANGUAGE_TAG_DESC"
+					required="true" />
+				<field
+					name="target_language_tag"
+					type="text"
+					default=""
+					label="MOD_STOOLPIGEON_TARGET_LANGUAGE_TAG_LABEL"
+					description="MOD_STOOLPIGEON_TARGET_LANGUAGE_TAG_DESC"
+					required="true" />
+
+        			<field 
+					name="client_selection"
+					type="checkboxes"
+					size= "3"
+					default="admin_selected"
+					label="MOD_STOOLPIGEON_CLIENT_SELECTION_LABEL"
+					description="MOD_STOOLPIGEON_CLIENT_SELECTION_DESC"
+					required="true">
+                			<option
+						value="admin_selected">MOD_STOOLPIGEON_CLIENT_SELECTION_ADMIN_SELECTED</option>
+                			<option
+						value="site_selected">MOD_STOOLPIGEON_CLIENT_SELECTION_SITE_SELECTED</option>
+                			<option
+						value="installation_selected">MOD_STOOLPIGEON_CLIENT_SELECTION_INSTALLATION_SELECTED</option>
+        			</field>
+
+				<field
+					name="spacer_3"
+					type="spacer"
+					class="text"
+					label="MOD_STOOLPIGEON_INSTALL_LOCATION_OPTIONS_LABEL"
+					description="MOD_STOOLPIGEON_INSTALL_LOCATION_OPTIONS_DESC" />
+				
+				<field name="spacer4" type="spacer"
+					hr="true" />
+
+				<field
+					name="source_installation_folder"
+					type="text"
+					default="_installation/language"
+					label="MOD_STOOLPIGEON_SOURCE_INSTALL_FOLDER_LABEL"
+					description="MOD_STOOLPIGEON_SOURCE_INSTALL_FOLDER_DESC" />
+				<field
+					name="target_installation_folder"
+					type="text"
+					default="_installation/language"
+					label="MOD_STOOLPIGEON_TARGET_INSTALL_FOLDER_LABEL"
+					description="MOD_STOOLPIGEON_TARGET_INSTALL_FOLDER_DESC" />
+
+				<field
+					name="mandatory_installation_ini_files"
+					type="textarea"
+					rows="5"
+					cols="60"
+					default="ini"
+					label="MOD_STOOLPIGEON_MANDATORY_INSTALL_INI_FILES_LABEL"
+					description="MOD_STOOLPIGEON_MANDATORY_INSTALL_INI_FILES_DESC" />
+
+				<field
+					name="mandatory_installation_non_ini_tagged_files"
+					type="textarea"
+					rows="5"
+					cols="60"
+					default="xml"
+					label="MOD_STOOLPIGEON_MANDATORY_INSTALL_NON_INI_TAGGED_FILES_LABEL"
+					description="MOD_STOOLPIGEON_MANDATORY_INSTALL_NON_INI_TAGGED_FILES_DESC" />
+				<field
+					name="mandatory_installation_non_ini_files"
+					type="textarea"
+					rows="5"
+					cols="60"
+					default=""
+					label="MOD_STOOLPIGEON_MANDATORY_INSTALL_NON_INI_FILES_LABEL"
+					description="MOD_STOOLPIGEON_MANDATORY_INSTALL_NON_INI_FILES_DESC" />
+
+
+				<field
+					name="spacer_4"
+					type="spacer"
+					class="text"
+					label="MOD_STOOLPIGEON_ADMIN_LOCATION_OPTIONS_LABEL"
+					description="MOD_STOOLPIGEON_ADMIN_LOCATION_OPTIONS_DESC" />
+				
+				<field name="spacer5" type="spacer"
+					hr="true" />
+
+				<field
+					name="source_admin_folder"
+					type="text"
+					default="language"
+					label="MOD_STOOLPIGEON_SOURCE_ADMIN_FOLDER_LABEL"
+					description="MOD_STOOLPIGEON_SOURCE_ADMIN_FOLDER_DESC" />
+				<field
+					name="target_admin_folder"
+					type="text"
+					default="language"
+					label="MOD_STOOLPIGEON_TARGET_ADMIN_FOLDER_LABEL"
+					description="MOD_STOOLPIGEON_TARGET_ADMIN_FOLDER_DESC" />
+
+
+				<field
+					name="mandatory_admin_ini_files"
+					type="textarea"
+					rows="5"
+					cols="60"
+					default="com_admin.ini,|, com_admin.sys.ini,|, com_ajax.ini,|, com_ajax.sys.ini,|, com_associations.ini,|, com_associations.sys.ini,|,com_banners.ini,|, com_banners.sys.ini,|, com_cache.ini,|, com_cache.sys.ini,|, com_categories.ini,|, com_categories.sys.ini,|, com_checkin.ini,|, com_checkin.sys.ini,|, com_config.ini,|, com_config.sys.ini,|, com_contact.ini,|, com_contact.sys.ini,|, com_content.ini,|, com_content.sys.ini,|, com_contenthistory.ini,|, com_contenthistory.sys.ini,|, com_cpanel.ini,|, com_cpanel.sys.ini,|, com_fields.ini,|, com_fields.sys.ini,|, com_finder.ini,|, com_finder.sys.ini,|, com_installer.ini,|, com_installer.sys.ini,|, com_joomlaupdate.ini,|, com_joomlaupdate.sys.ini,|, com_languages.ini,|, com_languages.sys.ini,|, com_login.ini,|, com_login.sys.ini,|, com_mailto.sys.ini,|, com_media.ini,|, com_media.sys.ini,|, com_menus.ini,|, com_menus.sys.ini,|, com_messages.ini,|, com_messages.sys.ini,|, com_modules.ini,|, com_modules.sys.ini,|, com_newsfeeds.ini,|, com_newsfeeds.sys.ini,|, com_plugins.ini,|, com_plugins.sys.ini,|, com_postinstall.ini,|, com_postinstall.sys.ini,|, com_redirect.ini,|, com_redirect.sys.ini,|, com_search.ini,|, com_search.sys.ini,|, com_tags.ini,|, com_tags.sys.ini,|, com_templates.ini,|, com_templates.sys.ini,|, com_users.ini,|, com_users.sys.ini,|, com_weblinks.ini,|, com_weblinks.sys.ini,|, com_wrapper.ini,|, com_wrapper.sys.ini,|, ini,|, lib_joomla.ini,|, mod_custom.ini,|, mod_custom.sys.ini,|, mod_feed.ini,|, mod_feed.sys.ini,|, mod_latest.ini,|, mod_latest.sys.ini,|, mod_logged.ini,|, mod_logged.sys.ini,|, mod_login.ini,|, mod_login.sys.ini,|, mod_menu.ini,|, mod_menu.sys.ini,|, mod_multilangstatus.ini,|, mod_multilangstatus.sys.ini,|, mod_popular.ini,|, mod_popular.sys.ini,|, mod_quickicon.ini,|, mod_quickicon.sys.ini,|, mod_sampledata.ini,|, mod_sampledata.sys.ini,|, mod_stats_admin.ini,|, mod_stats_admin.sys.ini,|, mod_status.ini,|, mod_status.sys.ini,|, mod_submenu.ini,|, mod_submenu.sys.ini,|, mod_title.ini,|, mod_title.sys.ini,|, mod_toolbar.ini,|, mod_toolbar.sys.ini,|, mod_version.ini,|, mod_version.sys.ini,|, plg_authentication_cookie.ini,|, plg_authentication_cookie.sys.ini,|, plg_authentication_gmail.ini,|, plg_authentication_gmail.sys.ini,|, plg_authentication_joomla.ini,|, plg_authentication_joomla.sys.ini,|, plg_authentication_ldap.ini,|, plg_authentication_ldap.sys.ini,|, plg_captcha_recaptcha.ini,|, plg_captcha_recaptcha.sys.ini,|, plg_content_contact.ini,|, plg_content_contact.sys.ini,|, plg_content_emailcloak.ini,|, plg_content_emailcloak.sys.ini,|, plg_content_fields.ini,|, plg_content_fields.sys.ini,|, plg_content_finder.ini,|, plg_content_finder.sys.ini,|, plg_content_joomla.ini,|, plg_content_joomla.sys.ini,|, plg_content_loadmodule.ini,|, plg_content_loadmodule.sys.ini,|, plg_content_pagebreak.ini,|, plg_content_pagebreak.sys.ini,|, plg_content_pagenavigation.ini,|, plg_content_pagenavigation.sys.ini,|, plg_content_vote.ini,|, plg_content_vote.sys.ini,|, plg_editors-xtd_article.ini,|, plg_editors-xtd_article.sys.ini,|, plg_editors-xtd_contact.ini,|, plg_editors-xtd_contact.sys.ini,|, plg_editors-xtd_fields.ini,|, plg_editors-xtd_fields.sys.ini,|, plg_editors-xtd_image.ini,|, plg_editors-xtd_image.sys.ini,|, plg_editors-xtd_menu.ini,|, plg_editors-xtd_menu.sys.ini,|, plg_editors-xtd_pagebreak.ini,|, plg_editors-xtd_pagebreak.sys.ini,|, plg_editors-xtd_readmore.ini,|, plg_editors-xtd_readmore.sys.ini,|, plg_editors_codemirror.ini,|, plg_editors_codemirror.sys.ini,|, plg_editors_none.ini,|, plg_editors_none.sys.ini,|, plg_editors_tinymce.ini,|, plg_editors_tinymce.sys.ini,|, plg_extension_joomla.ini,|, plg_extension_joomla.sys.ini,|, plg_fields_calendar.ini,|, plg_fields_calendar.sys.ini,|, plg_fields_checkboxes.ini,|, plg_fields_checkboxes.sys.ini,|, plg_fields_color.ini,|, plg_fields_color.sys.ini,|, plg_fields_editor.ini,|, plg_fields_editor.sys.ini,|, plg_fields_image.ini,|, plg_fields_image.sys.ini,|, plg_fields_imagelist.ini,|, plg_fields_imagelist.sys.ini,|, plg_fields_integer.ini,|, plg_fields_integer.sys.ini,|, plg_fields_list.ini,|, plg_fields_list.sys.ini,|, plg_fields_media.ini,|, plg_fields_media.sys.ini,|, plg_fields_radio.ini,|, plg_fields_radio.sys.ini,|, plg_fields_sql.ini,|, plg_fields_sql.sys.ini,|, plg_fields_text.ini,|, plg_fields_text.sys.ini,|, plg_fields_textarea.ini,|, plg_fields_textarea.sys.ini,|, plg_fields_url.ini,|, plg_fields_url.sys.ini,|, plg_fields_user.ini,|, plg_fields_user.sys.ini,|, plg_fields_usergrouplist.ini,|, plg_fields_usergrouplist.sys.ini,|, plg_finder_categories.ini,|, plg_finder_categories.sys.ini,|, plg_finder_contacts.ini,|, plg_finder_contacts.sys.ini,|, plg_finder_content.ini,|, plg_finder_content.sys.ini,|, plg_finder_newsfeeds.ini,|, plg_finder_newsfeeds.sys.ini,|, plg_finder_tags.ini,|, plg_finder_tags.sys.ini,|, plg_finder_weblinks.ini,|, plg_finder_weblinks.sys.ini,|, plg_installer_folderinstaller.ini,|, plg_installer_folderinstaller.sys.ini,|, plg_installer_packageinstaller.ini,|, plg_installer_packageinstaller.sys.ini,|, plg_installer_urlinstaller.ini,|, plg_installer_urlinstaller.sys.ini,|, plg_installer_webinstaller.ini,|, plg_installer_webinstaller.sys.ini,|, plg_quickicon_extensionupdate.ini,|, plg_quickicon_extensionupdate.sys.ini,|, plg_quickicon_joomlaupdate.ini,|, plg_quickicon_joomlaupdate.sys.ini,|, plg_quickicon_phpversioncheck.ini,|, plg_quickicon_phpversioncheck.sys.ini,|, plg_sampledata_blog.ini,|, plg_sampledata_blog.sys.ini,|, plg_search_categories.ini,|, plg_search_categories.sys.ini,|, plg_search_contacts.ini,|, plg_search_contacts.sys.ini,|, plg_search_content.ini,|, plg_search_content.sys.ini,|, plg_search_newsfeeds.ini,|, plg_search_newsfeeds.sys.ini,|, plg_search_tags.ini,|, plg_search_tags.sys.ini,|, plg_search_weblinks.ini,|, plg_search_weblinks.sys.ini,|, plg_system_cache.ini,|, plg_system_cache.sys.ini,|, plg_system_debug.ini,|, plg_system_debug.sys.ini,|, plg_system_fields.ini,|, plg_system_fields.sys.ini,|, plg_system_highlight.ini,|, plg_system_highlight.sys.ini,|, plg_system_languagecode.ini,|, plg_system_languagecode.sys.ini,|, plg_system_languagefilter.ini,|, plg_system_languagefilter.sys.ini,|, plg_system_log.ini,|, plg_system_log.sys.ini,|, plg_system_logout.ini,|, plg_system_logout.sys.ini,|, plg_system_p3p.ini,|, plg_system_p3p.sys.ini,|, plg_system_redirect.ini,|, plg_system_redirect.sys.ini,|, plg_system_remember.ini,|, plg_system_remember.sys.ini,|, plg_system_sef.ini,|, plg_system_sef.sys.ini,|, plg_twofactorauth_totp.ini,|, plg_twofactorauth_totp.sys.ini,|, plg_twofactorauth_yubikey.ini,|, plg_twofactorauth_yubikey.sys.ini,|, plg_user_contactcreator.ini,|, plg_user_contactcreator.sys.ini,|, plg_user_joomla.ini,|, plg_user_joomla.sys.ini,|, plg_user_profile.ini,|, plg_user_profile.sys.ini,|, tpl_hathor.ini,|, tpl_hathor.sys.ini,|, tpl_isis.ini,|, tpl_isis.sys.ini,|, plg_editors-xtd_module.ini,|, plg_editors-xtd_module.sys.ini,|, plg_system_stats.ini,|, plg_system_stats.sys.ini,|, plg_system_updatenotification.ini,|, plg_system_updatenotification.sys.ini,|, plg_system_sessiongc.ini,|, plg_system_sessiongc.sys.ini"
+					label="MOD_STOOLPIGEON_MANDATORY_ADMIN_INI_FILES_LABEL"
+					description="MOD_STOOLPIGEON_MANDATORY_ADMIN_INI_FILES_DESC" />
+				<field
+					name="mandatory_admin_non_ini_tagged_files"
+					type="textarea"
+					rows="5"
+					cols="60"
+					default="xml,|, localise.php"
+					label="MOD_STOOLPIGEON_MANDATORY_ADMIN_NON_INI_TAGGED_FILES_LABEL"
+					description="MOD_STOOLPIGEON_MANDATORY_ADMIN_NON_INI_TAGGED_FILES_DESC" />
+				<field
+					name="mandatory_admin_non_ini_files"
+					type="textarea"
+					rows="5"
+					cols="60"
+					default="install.xml"
+					label="MOD_STOOLPIGEON_MANDATORY_ADMIN_NON_INI_FILES_LABEL"
+					description="MOD_STOOLPIGEON_MANDATORY_ADMIN_NON_INI_FILES_DESC" />
+
+				<field
+					name="spacer_6"
+					type="spacer"
+					class="text"
+					label="MOD_STOOLPIGEON_SITE_LOCATION_OPTIONS_LABEL"
+					description="MOD_STOOLPIGEON_SITE_LOCATION_OPTIONS_DESC" />
+				
+				<field name="spacer7" type="spacer"
+					hr="true" />
+				<field
+					name="source_site_folder"
+					type="text"
+					default="language"
+					label="MOD_STOOLPIGEON_SOURCE_SITE_FOLDER_LABEL"
+					description="MOD_STOOLPIGEON_SOURCE_SITE_FOLDER_DESC" />
+				<field
+					name="target_site_folder"
+					type="text"
+					default="language"
+					label="MOD_STOOLPIGEON_TARGET_SITE_FOLDER_LABEL"
+					description="MOD_STOOLPIGEON_TARGET_SITE_FOLDER_DESC" />
+
+				<field
+					name="mandatory_site_ini_files"
+					type="textarea"
+					rows="5"
+					cols="60"
+					default="com_ajax.ini,|, com_config.ini,|, com_contact.ini,|, com_content.ini,|, com_finder.ini,|, com_mailto.ini,|, com_media.ini,|, com_messages.ini,|, com_newsfeeds.ini,|, com_search.ini,|, com_tags.ini,|, com_users.ini,|, com_weblinks.ini,|, com_wrapper.ini,|, files_joomla.sys.ini,|, finder_cli.ini,|, ini,|, lib_fof.ini,|, lib_fof.sys.ini,|, lib_idna_convert.sys.ini,|, lib_joomla.ini,|, lib_joomla.sys.ini,|, lib_phputf8.sys.ini,|, lib_phpass.sys.ini,|, lib_simplepie.sys.ini,|, mod_articles_archive.ini,|, mod_articles_archive.sys.ini,|, mod_articles_categories.ini,|, mod_articles_categories.sys.ini,|, mod_articles_category.ini,|, mod_articles_category.sys.ini,|, mod_articles_latest.ini,|, mod_articles_latest.sys.ini,|, mod_articles_news.ini,|, mod_articles_news.sys.ini,|, mod_articles_popular.ini,|, mod_articles_popular.sys.ini,|, mod_banners.ini,|, mod_banners.sys.ini,|, mod_breadcrumbs.ini,|, mod_breadcrumbs.sys.ini,|, mod_custom.ini,|, mod_custom.sys.ini,|, mod_feed.ini,|, mod_feed.sys.ini,|, mod_finder.ini,|, mod_finder.sys.ini,|, mod_footer.ini,|, mod_footer.sys.ini,|, mod_languages.ini,|, mod_languages.sys.ini,|, mod_login.ini,|, mod_login.sys.ini,|, mod_menu.ini,|, mod_menu.sys.ini,|, mod_random_image.ini,|, mod_random_image.sys.ini,|, mod_related_items.ini,|, mod_related_items.sys.ini,|, mod_search.ini,|, mod_search.sys.ini,|, mod_stats.ini,|, mod_stats.sys.ini,|, mod_syndicate.ini,|, mod_syndicate.sys.ini,|, mod_tags_popular.ini,|, mod_tags_popular.sys.ini,|, mod_tags_similar.ini,|, mod_tags_similar.sys.ini,|, mod_users_latest.ini,|, mod_users_latest.sys.ini,|, mod_weblinks.ini,|, mod_weblinks.sys.ini,|, mod_whosonline.ini,|, mod_whosonline.sys.ini,|, mod_wrapper.ini,|, mod_wrapper.sys.ini,|, tpl_beez3.ini,|, tpl_beez3.sys.ini,|, tpl_protostar.ini,|, tpl_protostar.sys.ini"
+					label="MOD_STOOLPIGEON_MANDATORY_SITE_INI_FILES_LABEL"
+					description="MOD_STOOLPIGEON_MANDATORY_SITE_INI_FILES_DESC" />
+				<field
+					name="mandatory_site_non_ini_tagged_files"
+					type="textarea"
+					rows="5"
+					cols="60"
+					default="xml,|, localise.php"
+					label="MOD_STOOLPIGEON_MANDATORY_SITE_NON_INI_TAGGED_FILES_LABEL"
+					description="MOD_STOOLPIGEON_MANDATORY_SITE_NON_INI_TAGGED_FILES_DESC" />
+				<field
+					name="mandatory_site_non_ini_files"
+					type="textarea"
+					rows="5"
+					cols="60"
+					default="install.xml"
+					label="MOD_STOOLPIGEON_MANDATORY_SITE_NON_INI_FILES_LABEL"
+					description="MOD_STOOLPIGEON_MANDATORY_SITE_NON_INI_FILES_DESC" />
+
+				<field
+					name="spacer_8"
+					type="spacer"
+					class="text"
+					label="MOD_STOOLPIGEON_COMMON_LOCATION_OPTIONS_LABEL"
+					description="MOD_STOOLPIGEON_COMMON_LOCATION_OPTIONS_DESC" />
+				
+				<field name="spacer9" type="spacer"
+					hr="true" />
+				<field
+					name="same_words_keys"
+					type="textarea"
+					rows="5"
+					cols="60"
+					default=""
+					label="MOD_STOOLPIGEON_SAME_WORDS_KEYS_LABEL"
+					description="MOD_STOOLPIGEON_SAME_WORDS_KEYS_DESC" />
+
+				<field
+					name="admin_files_to_keep_in_target"
+					type="textarea"
+					rows="5"
+					cols="60"
+					default=""
+					label="MOD_STOOLPIGEON_ADMIN_FILES_TO_KEEP_IN_TARGET_LABEL"
+					description="MOD_STOOLPIGEON_ADMIN_FILES_TO_KEEP_IN_TARGET_DESC" />
+
+				<field
+					name="site_files_to_keep_in_target"
+					type="textarea"
+					rows="5"
+					cols="60"
+					default=""
+					label="MOD_STOOLPIGEON_SITE_FILES_TO_KEEP_IN_TARGET_LABEL"
+					description="MOD_STOOLPIGEON_SITE_FILES_TO_KEEP_IN_TARGET_DESC" />
+
+				<field
+					name="keys_to_keep_in_target"
+					type="textarea"
+					rows="5"
+					cols="60"
+					default="PLG_RECAPTCHA_CUSTOM_LANG,|, PLG_RECAPTCHA_INSTRUCTIONS_VISUAL,|, PLG_RECAPTCHA_INSTRUCTIONS_AUDIO,|, PLG_RECAPTCHA_PLAY_AGAIN,|, PLG_RECAPTCHA_CANT_HEAR_THIS,|, PLG_RECAPTCHA_VISUAL_CHALLENGE,|, PLG_RECAPTCHA_AUDIO_CHALLENGE,|, PLG_RECAPTCHA_REFRESH_BTN,|, PLG_RECAPTCHA_HELP_BTN,|, PLG_RECAPTCHA_INCORRECT_TRY_AGAIN"
+					label="MOD_STOOLPIGEON_KEYS_TO_KEEP_IN_TARGET_LABEL"
+					description="MOD_STOOLPIGEON_KEYS_TO_KEEP_IN_TARGET_DESC" />
+
+				<field
+					name="spacer_9"
+					type="spacer"
+					class="text"
+					label="MOD_STOOLPIGEON_DISPLAY_OPTIONS_LABEL"
+					description="MOD_STOOLPIGEON_DISPLAY_OPTIONS_DESC" />
+				
+				<field name="spacer10" type="spacer"
+					hr="true" />
+
+        			<field 
+					name="options_to_display"
+					type="checkboxes"
+					size= "8"
+					default=""
+					label="MOD_STOOLPIGEON_OPTIONS_TO_DISPLAY_LABEL"
+					description="MOD_STOOLPIGEON_OPTIONS_TO_DISPLAY_DESC">
+
+                			<option	value="are_same_option">MOD_STOOLPIGEON_ARE_SAME_OPTION_LABEL</option>
+                			<option	value="hide_tables">MOD_STOOLPIGEON_HIDE_TABLES_LABEL</option>
+                			<option	value="hide_keys_amount">MOD_STOOLPIGEON_HIDE_DEFS_AMOUNT_LABEL</option>
+                			<option	value="display_catched">MOD_STOOLPIGEON_DISPLAY_CATCHED_LABEL</option>
+                			<option	value="display_diff">MOD_STOOLPIGEON_DISPLAY_DIFF_LABEL</option>
+                			<option	value="hide_mandatory_info">MOD_STOOLPIGEON_HIDE_MANDATORY_INFO_LABEL</option>
+                			<option	value="hide_source_info">MOD_STOOLPIGEON_HIDE_SOURCE_INFO_LABEL</option>
+                			<option	value="hide_target_info">MOD_STOOLPIGEON_HIDE_TARGET_INFO_LABEL</option>
+        			</field>
+
+				<field
+					name="spacer_11"
+					type="spacer"
+					class="text"
+					label="MOD_STOOLPIGEON_VERSION_OPTIONS_LABEL"
+					description="MOD_STOOLPIGEON_VERSION_OPTIONS_DESC" />
+				
+				<field name="spacer12" type="spacer"
+					hr="true" />
+
+				<field
+					name="source_version"
+					type="text"
+					cols="20"
+					default="Unknown"
+					label="MOD_STOOLPIGEON_SOURCE_VERSION_LABEL"
+					description="MOD_STOOLPIGEON_SOURCE_VERSION_DESC" />
+
+				<field
+					name="target_version"
+					type="text"
+					default="Unknown"
+					label="MOD_STOOLPIGEON_TARGET_VERSION_LABEL"
+					description="MOD_STOOLPIGEON_TARGET_VERSION_DESC" />
+
+        			<field 
+					name="version_options"
+					type="checkboxes"
+					size= "3"
+					default=""
+					label="MOD_STOOLPIGEON_V_OPTIONS_LABEL"
+					description="MOD_STOOLPIGEON_V_OPTIONS_DESC">
+                			<option	value="catch_quotes">MOD_STOOLPIGEON_CATCH_QUOTES_LABEL</option>
+                		
+        			</field>
+
+				<field
+					name="spacer_13"
+					type="spacer"
+					class="text"
+					label="MOD_STOOLPIGEON_SYSTEM_OPTIONS_LABEL"
+					description="MOD_STOOLPIGEON_SYSTEM_OPTIONS_DESC" />
+				
+				<field name="spacer14" type="spacer"
+					hr="true" />
+
+        			<field 
+					name="system_messages_to_display"
+					type="checkboxes"
+					size= "7"
+					default=""
+					label="MOD_STOOLPIGEON_SYSTEM_MESSAGES_TO_DISPLAY_LABEL"
+					description="MOD_STOOLPIGEON_SYSTEM_MESSAGES_TO_DISPLAY_DESC">
+                			<option	value="bom_as_system_message">MOD_STOOLPIGEON_BOM_AS_SYSTEM_MESSAGE_LABEL</option>
+               				<option	value="eol_as_system_message">MOD_STOOLPIGEON_EOL_AS_SYSTEM_MESSAGE_LABEL</option>
+                			<option	value="extra_space_as_system_message">MOD_STOOLPIGEON_EXTRA_SPACE_AS_SYSTEM_MESSAGE_LABEL</option>
+                			<option value="missed_quotes_as_system_message">MOD_STOOLPIGEON_MISSED_QUOTES_AS_SYSTEM_MESSAGE_LABEL</option>
+                			<option	value="bad_usage_quotes_as_system_message">MOD_STOOLPIGEON_BAD_USAGE_QUOTES_AS_SYSTEM_MESSAGE_LABEL</option>
+                			<option	value="missed_equal_as_system_message">MOD_STOOLPIGEON_MISSED_EQUAL_AS_SYSTEM_MESSAGE_LABEL</option>
+                			<option	value="missed_keys_as_system_message">MOD_STOOLPIGEON_MISSED_KEYS_AS_SYSTEM_MESSAGE_LABEL</option>
+                			<option value="changed_keys_text_as_system_message">MOD_STOOLPIGEON_CHANGED_KEYS_TEXT_AS_SYSTEM_MESSAGE_LABEL</option>
+        			</field>
+
+				<field
+					name="spacer_15"
+					type="spacer"
+					class="text"
+					label="MOD_STOOLPIGEON_EXPERIMENTAL_OPTIONS_LABEL"
+					description="MOD_STOOLPIGEON_EXPERIMENTAL_OPTIONS_DESC" />
+				
+				<field name="spacer16" type="spacer"
+					hr="true" />
+
+    				<field 	name="experimental_mode"
+					type="list"
+					default="none"
+					label="MOD_STOOLPIGEON_EXPERIMENTAL_MODE_LABEL"
+					description="MOD_STOOLPIGEON_EXPERIMENTAL_MODE_DESC">
+					<option value="synchronise_target_files">MOD_STOOLPIGEON_SYNCHRONISE_TARGET_FILES_LABEL</option>
+      					<option value="enable_edit_mode">MOD_STOOLPIGEON_ENABLE_EDIT_MODE_LABEL</option>
+     					<option value="sort_target_keys">MOD_STOOLPIGEON_SORT_TARGET_KEYS_LABEL</option>
+                			<option value="backup_target_files">MOD_STOOLPIGEON_BACKUP_TARGET_FILES_LABEL</option>
+      					<option value="none">MOD_STOOLPIGEON_EXPERIMENTAL_MODE_NONE</option>
+   				</field>
+
+        			<field 
+					name="experimental_options_to_display"
+					type="checkboxes"
+					size= "5"
+					default=""
+					label="MOD_STOOLPIGEON_EXPERIMENTAL_OPTIONS_TO_DISPLAY_LABEL"
+					description="MOD_STOOLPIGEON_EXPERIMENTAL_OPTIONS_TO_DISPLAY_DESC">
+                			<option	value="relative_target_line">MOD_STOOLPIGEON_RELATIVE_TARGET_LINE_LABEL</option>               			
+                			<option value="report_files_keys_addeds_or_deleteds">MOD_STOOLPIGEON_REPORT_ADDED_DELETED_LABEL</option>
+                			<option value="coordinated_task">MOD_STOOLPIGEON_COORDINATED_TASK_LABEL</option>
+                			<option value="display_package_link">MOD_STOOLPIGEON_DISPLAY_PACKAGE_LINK_LABEL</option>
+                			<option value="allow_liar_use">MOD_STOOLPIGEON_ALLOW_LIAR_USE_LABEL</option>
+        			</field>
+
+        			<field 
+					name="experimental_extras"
+					type="checkboxes"
+					size= "6"
+					default=""
+					label="MOD_STOOLPIGEON_EXPERIMENTAL_EXTRAS_TO_DISPLAY_LABEL"
+					description="MOD_STOOLPIGEON_EXPERIMENTAL_EXTRAS_TO_DISPLAY_DESC">
+					<option	value="raw_source">MOD_STOOLPIGEON_RAW_OUTPUT_SOURCE_FILES_LABEL</option>
+					<option	value="raw_target">MOD_STOOLPIGEON_RAW_OUTPUT_TARGET_FILES_LABEL</option>
+					<option	value="scape_html">MOD_STOOLPIGEON_SCAPE_HTML_LABEL</option>
+					<option	value="raw_source_single_quotes">MOD_STOOLPIGEON_RAW_OUTPUT_SOURCE_FILES_SINGLE_QUOTES_LABEL</option>
+					<option	value="raw_target_single_quotes">MOD_STOOLPIGEON_RAW_OUTPUT_TARGET_FILES_SINGLE_QUOTES_LABEL</option>
+					<option	value="only_special_cases">MOD_STOOLPIGEON_ONLY_SPECIAL_CASES_LABEL</option>
+        			</field>
+
+			</fieldset>
+
+			<fieldset name="advanced">
+				<field
+					name="layout"
+					type="modulelayout"
+					label="JFIELD_ALT_LAYOUT_LABEL"
+					description="MOD_LANGUAGES_FIELD_MODULE_LAYOUT_DESC" />
+
+				<field
+					name="moduleclass_sfx"
+					type="text"
+					label="COM_MODULES_FIELD_MODULECLASS_SFX_LABEL"
+					description="COM_MODULES_FIELD_MODULECLASS_SFX_DESC" />
+
+			</fieldset>
+		</fields>
+	</config>
+</extension>
