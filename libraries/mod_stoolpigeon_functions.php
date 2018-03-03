@@ -1998,7 +1998,7 @@ function diff_tags_delete_stored_cookies($stored_cookies = '', $actual_module = 
 }
 
 function coordinated_task_delete_stored_cookies($stored_cookies = '', $source_language_tag = '',
-                                                $source_version = '', $target_language_tag = '', $actual_module = '')
+	$source_version = '', $target_language_tag = '', $actual_module = '')
 {
 	if (isset($stored_cookies['coordinated_task'][$source_language_tag][$source_version]))
 	{
@@ -2059,7 +2059,7 @@ function coordinated_task_delete_stored_cookies($stored_cookies = '', $source_la
 }
 
 function coordinated_task_delete_stored_cookies_by_client($stored_cookies = '', $client = '',
-                                                          $source_language_tag = '', $source_version = '', $target_language_tag = '', $actual_module = '')
+	$source_language_tag = '', $source_version = '', $target_language_tag = '', $actual_module = '')
 {
 	if (isset($stored_cookies['coordinated_task'][$source_language_tag][$source_version][$client]))
 	{

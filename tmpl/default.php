@@ -11,7 +11,5 @@ JHtml::_('stylesheet', 'mod_stoolpigeon/template.css', array(), true);
 ?>
 
 <div class="mod-stoolpigeon<?php echo $moduleclass_sfx ?>">
-<?php
-echo $languages_info;
-?>
+	<?php echo $languages_info; ?>
 </div>
