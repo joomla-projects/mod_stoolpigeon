@@ -8,7 +8,7 @@
 // no direct access
 defined('_JEXEC') or die;
 
-require_once dirname(__FILE__).'/helper.php';
+require_once dirname(__FILE__) . '/helper.php';
 
 $languages_info = modStoolpigeonHelper::getLanguageInfo($module, $params);
 
