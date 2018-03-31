@@ -1233,6 +1233,7 @@ function revise_file_content(&$matrix_info = array(), $client = '', &$client_dat
 			list($key, $value) = explode('=', $line, 2);
 			$trimmed_key             = trim($key);
 			$trimmed_value           = trim($value);
+			$trimmed_value           = str_replace('\"', '"_QQ_"', $trimmed_value);
 			$trimmed_value_Q_cleaned = preg_replace('/"_QQ_"/', '', $trimmed_value);
 
 			$line_counter++;
