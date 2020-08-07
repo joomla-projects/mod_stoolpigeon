@@ -11,9 +11,9 @@
 	<license>GNU General Public License version 2 or later; see LICENSE.txt</license>
 	<authorEmail>info@comunidadjoomla.org</authorEmail>
 	<authorUrl>www.comunidadjoomla.org</authorUrl>
-	<version>3.9.0.2</version>
+	<version>3.9.0.3</version>
 	<description><![CDATA[
-		<div style="text-align:left;"><h2>The module mod_stoolpigeon v3.9.0.2 has been successfully installed</h2>
+		<div style="text-align:left;"><h2>The module mod_stoolpigeon v3.9.0.3 has been successfully installed</h2>
 		This tool provide a flexible configuration for catch and report common issues related with language matters, but you are not excluded after use it to apply debug tasks or any other required extra control too.<br/><br/>Common issues detectables are:<br/>
 		<ol>
 		<li>Non UTF 8 files.</li>
